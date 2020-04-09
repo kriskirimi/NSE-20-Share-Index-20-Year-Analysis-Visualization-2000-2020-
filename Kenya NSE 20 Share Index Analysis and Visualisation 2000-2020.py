@@ -7,8 +7,9 @@ Created on Wed Mar  4 16:06:08 2020
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-from matplotlib.animation import FuncAnimation
-df = pd.read_csv(r'C:\Users\KIRIMI\.spyder-py3\My Projects\NSE 20 Share Index 20 Year Analysis Visualization (2000-2020)\Data\Kenya NSE 20 Historical Data.csv')
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+df = pd.read_csv(r'C:\Users\KIRIMI\Documents\GitHub\NSE-20-Share-Index-20-Year-Analysis-Visualization-2000-2020-\Data\Kenya NSE 20 Historical Data.csv')
 #Kindly note that the data above is the latest data as of 22nd March 2020
 df.tail(5)
 df.columns
@@ -57,12 +58,12 @@ ax3.set_title('President Uhuru Kenyatta Tenure (April 2013-March 2020)')
 #PLOT NO4-President Uhuru Kenyatta Tenure (March 2019-March 2020)
 fig, ax4 = plt.subplots(figsize=(7, 7))
 ax4.plot(df['Dates'], df2['Price'], color = 'blue', label='Price')
-ax4.set(xlabel='Dates', ylabel='Price', xlim = ['2019-03-04', '2020-03-19'])
+ax4.set(xlabel='Dates', xlim = ['2019-03-04', '2020-03-19'])
+ax4.set_ylabel('Price', fontsize=1)
 date_formatter_4 = mdates.DateFormatter('%B\n%Y')
 locator4 = mdates.MonthLocator()
 ax4.xaxis.set_major_locator(locator4)
 ax4.xaxis.set_major_formatter(date_formatter_4)
 ax4.set_title('President Uhuru Kenyatta Tenure (March 2019-March 2020)')
-#ax4.set_xticklabels(rotation=90)
 plt.tight_layout()
 plt.show()
